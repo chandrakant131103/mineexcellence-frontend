@@ -146,6 +146,8 @@ const AppSidebar = ({ activeTab, setActiveTab, sidebarOpen, setSidebarOpen, them
   );
 };
 
+
+
 // Dashboard Component
 const Dashboard = ({ results, theme }) => {
   const metrics = [
@@ -987,5 +989,21 @@ const MineExcellenceApp = () => {
     </div>
   );
 };
+
+
+// src/api.js or similar
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000'; // Fallback for local dev
+export const fetchData = async () => {
+  const response = await fetch(`${apiUrl}/api/endpoint`);
+  return response.json();
+};
+
+
+
+import axios from 'axios';
+const api = axios.create({
+  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3000',
+});
+
 
 export default MineExcellenceApp;
